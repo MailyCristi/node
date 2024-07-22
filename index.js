@@ -39,5 +39,5 @@ app.get('/divide', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Servidor escuchando en http://localhost:${port}`);
+  console.log(`Servidor escuchando en http://10.10.174.62:${port}`);
 });
