@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+const os = require('os');
+const networkInterfaces = os.networkInterfaces();
 const port = 3000;
 
 app.use(express.static('views'));
@@ -37,7 +39,18 @@ app.get('/divide', (req, res) => {
     res.send(`Resultado: ${result}`);
   }
 });
+const getLocalIP = () => {
+  for (const name of Object.keys(networkInterfaces)) {
+    for (const net of networkInterfaces[name]) {
+      if (net.family === 'IPv4' && !net.internal) {
+        return net.address;
+      }
+    }
+  }
+  return 'No se encontró una IP local.';
+};
 
 app.listen(port, () => {
-  console.log(`Servidor escuchando en http://10.10.174.62:${port}`);
+  console.log(`Servidor escuchando en http://${getLocalIP()}:${port}`);
 });
+console.log('IP local:', getLocalIP());
