@@ -6,7 +6,7 @@ pipeline{
                 echo "Hola desde saludo 1"
             }
         }
-        stage("FINE"){
+        stage("HOLA"){
             steps{
                 echo "FINE"
             }
