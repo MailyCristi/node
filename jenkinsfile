@@ -1,0 +1,15 @@
+pipeline{
+    agent any
+    stages{
+        stage("Saludo 1"){
+            steps{
+                echo "Hola desde saludo 1"
+            }
+        }
+        stage("FINE"){
+            steps{
+                echo "FINE"
+            }
+        }
+    }
+}
